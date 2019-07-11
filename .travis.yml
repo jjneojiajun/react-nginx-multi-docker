@@ -22,3 +22,15 @@ after_success:
   - docker push jjneojiajun/multi-nginx
   - docker push jjneojiajun/multi-server
   - docker push jjneojiajun/multi-worker
+  
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: react-nginx-multi-docker
+  env: ReactNginxMultiDocker-env 
+  bucket_name: elasticbeanstalk-us-east-2-511788195710
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: $AWS_SECRET_KEY
